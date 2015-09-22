@@ -19,8 +19,8 @@ print("")
 
 print("AREA Y PERIMETRO DE CM A METROS")
 print("")
-print("\tEl area es: " + str(area*100) + "m")
-print("\tEl perimetro es: "+ str(perimetro*100) + "m")
+print("\tEl area es: " + str(area/100) + "m")
+print("\tEl perimetro es: "+ str(perimetro/100) + "m")
 print("")
 
 print("AREA Y PERIMETRO DE CM A PULGADAS")
