@@ -20,7 +20,7 @@ for i in range(1,6):
 		print("\t Descuento: "+  str(round(descuento,2)))
 		print("\t Total: "+str((monto-descuento)))
 
-	elif monto < 500 and	monto >=200:
+	elif monto < 500 and monto >=200:
 		descuento = monto*0.20
 		print("")
 		print("\t Sub total: "+ str(monto))
