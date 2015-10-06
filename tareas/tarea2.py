@@ -1,4 +1,4 @@
-#TAREA1
+#TAREA2
 # Autor: Rodrigo Vergara
 #
 # Crear un programa en Python que resuelva el siguiente problema de física: Una ambulancia se mueve con una velocidad de 120 km/h y necesita recorrer un tramo recto de 60km. 
