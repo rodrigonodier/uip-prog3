@@ -7,7 +7,7 @@ Esta función la utilizamos normalmente en conjunto con: _if__name___ == _"__mai
 Ejemplo:
 
 def main():
-	print("Hola mundo.")
+    print("Hola mundo.")
 
 _if__name___ == _"__main__":
-	main()
+    main()
