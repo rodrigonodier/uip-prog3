@@ -1,72 +1,42 @@
-lista_items = {}
+
+import os
+import tarea_5_add as A
+import tarea_5_del as R
+import tarea_5_display as D
+
+lista_items={}
 
 def main():
-	print("\n\t Bienvenido al modulo de inventario.\n")
-	print("\t\t 1. Agregar elemento a la lista de supermercado.")
-	print("\t\t 2. Eliminar elemento a la lista de supermercado.")
-	print("\t\t 3. Ver elemento a la lista de supermercado.")
-	op = int(input("\n Opción: "))
-	if op==1:
-		list_add()
-	
-	if op==2:
-		list_del()
-	
-	if op==3:
-		list_display()
-	else:
-		print("Opción invalida.")
-		main()
-
-
-def list_add():
-
-	global lista_items
-	item=0
-	i=1
+	op=1
+	catch=0
 	tmp=0
+	while op !=4:
 	
-	while tmp != "N":
-	
-		item = str(input("\n\t Nombre del articulo: "))
-		#item_qty = str(input("\n\t Cantidad: "))
+		os.system('cls')
+		print("\n\t Gestión de lista de supermercado.\n")
+		print("\t\t 1. Agregar elemento a la lista de supermercado.")
+		print("\t\t 2. Eliminar elemento a la lista de supermercado.")
+		print("\t\t 3. Ver elemento a la lista de supermercado.")
+		print("\t\t 4. Salir.")
+
+		op = int(input("\n Opción: "))
+
+		if op==1:
+			tmp = A.list_add(lista_items)
 		
-		#lista_items[item]=item_qty
-		lista_items[item]=i
+		if op==2:
+			if tmp ==0:
+				print("\nPrimero debe introducir un elemento en la lista.")
+				catch = input ("\n\nPresione ENTER para volver al Menu principal")
+				main()
+			elif tmp!=0:
+				obj = R.list_del(tmp)
 		
-		
-		print("\n Articulo: " + str(lista_items))
-		
-		tmp = str(input("\n Desea añadir un nuevo articulo? S/N: "))
-		i=i+1
-		
+		if op==3:
+			obj = D.list_display(tmp)
+			catch = input ("\n\nPresione ENTER para volver al Menu principal")
 	else:
-		main()
+		return
 
-def list_del():
-	item=0
-	
-	item = str(input("\n\t Nombre del articulo: "))
-	
-	del(lista_items[item])
-	
-	print(lista_items)
-	
-	main()
-	
-	'''
-	try:
-		fh = open(estudiante + ".txt","w")
-		fh.write("Estudiante: "+ estudiante + "\nNotas:      " + str(lista) + "\nPromedio:   " + str(promedio))
-
-	except IOError:
-		print("\nNo se ha podido crear el fichero: " + estudiante + ".txt")
-	else:
-		print("\nEl archivo " + estudiante + ".txt se ha creado correctamente.")
-	fh.close()
-'''
-
-def list_display():
-	print("Añadir elemento.")
 if __name__ == "__main__":
 	main()
