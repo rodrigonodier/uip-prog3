@@ -1,16 +1,7 @@
 import os
 import tarea_6_cliente as C
 
-ajedrez=[]
-atletismo=[]
-baloncesto=[]
-futbol=[]
-karate=[]
-natacion=[]
-volleyball=[]
-flag=[]
-pingpong=[]
-otros=[]
+lista={"ajedrez":0,"atletismo":0,"baloncesto":0,"futbol":0,"karate":0,"natacion":0,"volleyball":0,"flag":0,"pingpong":0,"otros":0}
 
 def main():
 	
@@ -29,16 +20,20 @@ def main():
 		if opc==1 and count==10:
 			x = str(input("\n\t Ha alcanzado el maximo de 10 encuestas.."))
 		elif opc==1 and count<=9:
-			nombre = input("\n\t Introduzca su nombre: ")
-			tmp = C.Deportes(nombre)
-			menu(tmp)
-			c=1
-			count=count+1
+			nombre = input("\n\t Introduzca el nombre: ")
+			while nombre =="":
+				print("\n\t Introduzca un nombre valido.")
+				nombre = input("\n\t Introduzca el nombre: ")
+			else:
+				tmp = C.Deportes(nombre)
+				menu(tmp)
+				c=1
+				count=count+1
 		if opc==2 and c==0:
 			x = str(input("\n\t Primero debe crear una encuesta.."))
 		elif opc==2 and c!=0:
 			os.system('cls')
-			tmp.statistics(ajedrez,atletismo,baloncesto,futbol,karate,natacion,volleyball,flag,pingpong,otros)
+			tmp.statistics(lista)
 	else:
 		return
 
@@ -60,27 +55,37 @@ def menu(tmp):
 	print("\t\t 10. Otros.")
 
 	op = int(input("\n Introduzca el numero asociado a la categoria: "))
-
+	
 	if op==1:
-		tmp.list_add(ajedrez,tmp.nombre)
+		zzz="ajedrez"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==2:
-		tmp.list_add(atletismo,tmp.nombre)
+		zzz="atletismo"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==3:
-		tmp.list_add(baloncesto,tmp.nombre)
+		zzz="baloncesto"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==4:
-		tmp.list_add(futbol,tmp.nombre)
+		zzz="futbol"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==5:
-		tmp.list_add(karate,tmp.nombre)
+		zzz="karate"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==6:
-		tmp.list_add(natacion,tmp.nombre)
+		zzz="natacion"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==7:
-		tmp.list_add(volleyball,tmp.nombre)
+		zzz="volleyball"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==8:
-		tmp.list_add(flag,tmp.nombre)
+		zzz="flag"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==9:
-		tmp.list_add(pingpong,tmp.nombre)
+		zzz="pingpong"
+		tmp.list_add(lista,tmp.nombre,zzz)
 	if op==10:
-		tmp.list_add(otros,tmp.nombre)
+		zzz="otros"
+		tmp.list_add(lista,tmp.nombre,zzz)
 
 if __name__ == "__main__":
 	main()
