@@ -1,0 +1,151 @@
+<Boxes>:
+	GridLayout:
+		cols: 1
+		#rows: 6
+		GridLayout:
+			cols: 1
+			rows: 1
+			#row_default_height: '0dp'
+			#row_force_default: True
+			#spacing: 0, 0
+			#padding: 0, 0
+			# add these two lines
+			size_hint_y: None
+			height: '30dp'
+			Label:
+				text: 'Sistema de Inventario SuperMercados Emperador S.A'
+
+		GridLayout:
+			cols: 4
+			rows: 1
+			size_hint_y: None
+			height: '30dp'
+			Button:
+				text: 'Añadir articulos'
+				on_press: _screen_manager.current = 'screen1'
+			Button:
+				text: 'Borrar articulos'
+				on_press: _screen_manager.current = 'screen2'
+			Button:
+				text: 'Buscar articulos'
+				on_press: _screen_manager.current = 'screen3'
+			Button:
+				text: 'Exportar a fichero'
+				on_press: _screen_manager.current = 'screen4'
+
+		GridLayout:
+			cols: 1
+			rows: 3
+			size_hint_y: None
+			height: '60dp'
+			ScreenManager:
+				id: _screen_manager
+
+				Screen:
+					name: 'screen1'
+					GridLayout:
+						cols:1
+						GridLayout:
+							cols: 6
+							rows: 1
+							size_hint_y: None
+							height: '30dp'
+							Label:
+								text: "ID de Articulo"
+							TextInput:
+								id:a_txt_1
+								focus: True
+								multiline: False
+								write_tab: False
+							Label:
+								text: "Descripción"
+							TextInput:
+								id: a_txt_2
+								multiline: False
+								write_tab: False
+							Label:
+								text: "Cantidad"
+								multiline: False
+							TextInput:
+								id: a_txt_3
+								write_tab: False
+								multiline: False
+
+						GridLayout:
+							cols:1
+							size_hint_y: None
+							height: '30dp'
+							Button:
+								text:'Añadir'
+								focus: True
+								on_press: root.add(a_txt_1.text,a_txt_2.text,a_txt_3.text)
+
+				Screen:
+					name: 'screen2'
+					GridLayout:
+						cols:2
+						GridLayout:
+							cols: 4
+							rows: 1
+							size_hint_y: None
+							height: '30dp'
+							Label:
+								text: "ID de Articulo"
+							TextInput:
+								id:d_txt_1
+							Label:
+								text: "Cantidad"
+							TextInput:
+								id:d_txt_2
+
+						GridLayout:
+							cols:2
+							size_hint_y: None
+							height: '30dp'
+							Button:
+								text:'Restar cantidad introducida'
+								on_press: root.delete_item(d_txt_1.text,d_txt_2.text)
+							Button:
+								text:'Eliminar Articulo'
+								on_press: root.delete(d_txt_1.text)
+
+				Screen:
+					name: 'screen3'
+					GridLayout:
+						cols:1
+						GridLayout:
+							cols: 2
+							rows: 1
+							size_hint_y: None
+							height: '30dp'
+							Label:
+								text: "ID de Articulo"
+							TextInput:
+								id:s_txt_1
+
+						GridLayout:
+							cols:1
+							size_hint_y: None
+							height: '30dp'
+							Button:
+								text:'Buscar'
+								on_press: root.search(s_txt_1.text)
+				Screen:
+					name: 'screen4'
+					GridLayout:
+						cols:1
+						GridLayout:
+							cols: 1
+							rows: 1
+							size_hint_y: None
+							height: '30dp'
+							Label:
+								text: "Clic en el botón Exportar para grabar toda la base de datos a un fichero txt."
+
+						GridLayout:
+							cols:1
+							size_hint_y: None
+							height: '30dp'
+							Button:
+								text:'Grabar fichero'
+								on_press: root.export()
